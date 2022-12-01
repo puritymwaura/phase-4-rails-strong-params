@@ -14,12 +14,7 @@ end
   render json: bird, status: :created
 
   end
-  private 
-  def birds_params
-    params.permit(:name, :species)
-  end
 
-  # GET /birds/:id
   def show
     bird = Bird.find_by(id: params[:id])
     if bird
@@ -27,6 +22,12 @@ end
     else
       render json: { error: "Bird not found" }, status: :not_found
     end
-  end
 
+
+  private 
+  def birds_params
+    params.permit(:name, :species)
+  end
 end
+
+
